@@ -38,14 +38,19 @@ namespace gustavodms\simplerouter {
             return new Request($queryParams, $bodyParams);
         }
 
-        public function getQueryParam(string $name, $default = null)
+        public function Params(string $name, $default = null)
         {
             return $this->queryParams[$name] ?? $default;
         }
 
-        public function getBodyParam(string $name, $default = null)
+        public function Body(string $name, $default = null)
         {
             return $this->bodyParams[$name] ?? $default;
+        }
+
+        public function QuerString(string $name, $default = null)
+        {
+            return $this->queryString[$name] ?? $default;
         }
     }
 }
