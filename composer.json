@@ -1,0 +1,17 @@
+{
+    "name": "gustavodms/simplerouter",
+    "description": "Simple PHP router",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "gustavodms\\simplerouter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gustavo Doria",
+            "email": "gustavodoriams@gmail.com"
+        }
+    ],
+    "require": {}
+}
