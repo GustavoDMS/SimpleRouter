@@ -7,25 +7,38 @@ use Closure;
 class Router
 {
     private static array $routes = array();
-
-    public static function GET(string $uri, Closure|array|string|null $action = null)
+    private static function route(string $method, string $uri, Closure|array|string|null $action = null)
     {
         $route = array(
             "route" => $uri,
-            "method" => 'GET',
+            "method" => $method,
             "action" => $action
         );
         self::$routes[] = $route;
     }
+    public static function GET(string $uri, Closure|array|string|null $action = null)
+    {
+        self::route('GET', $uri, $action);
+    }
 
     public static function POST(string $uri, Closure|array|string|null $action = null)
     {
-        $route = array(
-            "route" => $uri,
-            "method" => 'POST',
-            "action" => $action
-        );
-        self::$routes[] = $route;
+        self::route('POST', $uri, $action);
+    }
+
+    public static function PUT(string $uri, Closure|array|string|null $action = null)
+    {
+        self::route('PUT', $uri, $action);
+    }
+
+    public static function DELETE(string $uri, Closure|array|string|null $action = null)
+    {
+        self::route('DELETE', $uri, $action);
+    }
+
+    public static function PATCH(string $uri, Closure|array|string|null $action = null)
+    {
+        self::route('PATCH', $uri, $action);
     }
 
     public static function Initialize(): void
@@ -58,7 +71,6 @@ class Router
                     }
                 }
                 if ($matched) {
-                    break;
                     $response = new ResponseWriter();
                     $request = Request::Initialize($params);
 

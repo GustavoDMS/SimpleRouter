@@ -1,6 +1,6 @@
 <?php
 
-namespace gustavodms\simplerouter {
+namespace gustavodms\simplerouter;
 
     class Request
     {
@@ -8,7 +8,7 @@ namespace gustavodms\simplerouter {
         private ?string $queryString;
         private ?array $bodyParams;
 
-        private function __construct(?array $params = null, ?array $bodyParams = null, ?string $queryString)
+        private function __construct(?array $params = null, ?array $bodyParams = null, ?string $queryString = null)
         {
             $this->params = $params;
             $this->queryString = $queryString;
@@ -35,7 +35,7 @@ namespace gustavodms\simplerouter {
                 }
             }
 
-            return new Request($queryParams, $bodyParams);
+            return new Request($queryParams, $bodyParams, $queryString);
         }
 
         public function Params(string $name, $default = null)
@@ -53,4 +53,3 @@ namespace gustavodms\simplerouter {
             return $this->queryString[$name] ?? $default;
         }
     }
-}
